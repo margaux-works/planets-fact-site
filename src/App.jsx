@@ -9,7 +9,7 @@ function App() {
       <div className="bg-darkBlue text-white min-h-screen">
         <Header />
         <Routes>
-          <Route path="/" element={<PlanetPage />} />
+          <Route path="/:planetName" element={<PlanetPage />} />
         </Routes>
       </div>
     </Router>

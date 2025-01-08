@@ -1,10 +1,14 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { planetsData } from '../data/planetsData';
-import PlanetImage from './PlanetImg';
 
 export const PlanetPage = () => {
-  const [activeTab, setActiveTab] = useState('overview'); // set overview tab as default tab
-  const planet = planetsData[0];
+  const { planetName } = useParams(); // Get the planet name from the URL
+  const planet = planetsData.find(
+    (p) => p.name.toLowerCase() === planetName.toLowerCase()
+  );
+
+  const [activeTab, setActiveTab] = useState('overview');
 
   const getContent = () => {
     switch (activeTab) {
@@ -20,17 +24,39 @@ export const PlanetPage = () => {
   return (
     <div className="p-6">
       <div className="text-center">
-        <PlanetImage
-          image={
-            activeTab === 'structure'
-              ? planet.images.internal
-              : activeTab === 'geology'
-              ? planet.images.geology
-              : planet.images.planet
-          }
-        />
-        <h2 className="text-4xl font-bold">{planet.name}</h2>
+        {/* Planet and Geology Images */}
+        <div className="relative flex justify-center mt-6">
+          {/* Base Planet Image */}
+          <img
+            src={
+              activeTab === 'structure'
+                ? planet.images.internal
+                : planet.images.planet
+            }
+            alt={`${planet.name} ${activeTab}`}
+            className="h-64"
+          />
+          {/* Geology Image Overlay */}
+          {activeTab === 'geology' && (
+            <img
+              src={planet.images.geology}
+              alt={`${planet.name} geology`}
+              className="absolute top-0 h-32"
+            />
+          )}
+        </div>
+
+        {/* Planet Title and Content */}
+        <h2 className="text-4xl font-bold mt-6">{planet.name}</h2>
         <p className="mt-4 text-gray-400">{getContent()}</p>
+        <a
+          href={planet.overview.source}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline mt-2 block"
+        >
+          Source: Wikipedia
+        </a>
       </div>
 
       {/* Tabs */}
