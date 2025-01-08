@@ -23,7 +23,7 @@ export const PlanetPage = () => {
 
   return (
     <div className="p-6">
-      <div className="text-center">
+      <div className="grid grid-cols-2">
         {/* Planet and Geology Images */}
         <div className="relative flex justify-center mt-6">
           {/* Base Planet Image */}
@@ -34,7 +34,7 @@ export const PlanetPage = () => {
                 : planet.images.planet
             }
             alt={`${planet.name} ${activeTab}`}
-            className="h-64"
+            className="h-64 m-20"
           />
           {/* Geology Image Overlay */}
           {activeTab === 'geology' && (
@@ -46,64 +46,100 @@ export const PlanetPage = () => {
           )}
         </div>
 
-        {/* Planet Title and Content */}
-        <h2 className="text-4xl font-bold mt-6">{planet.name}</h2>
-        <p className="mt-4 text-gray-400">{getContent()}</p>
-        <a
-          href={planet.overview.source}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline mt-2 block"
-        >
-          Source: Wikipedia
-        </a>
-      </div>
+        <div className="max-w-[350px] ml-20 mt-10">
+          {/* Planet Title and Content */}
+          <h2 className="text-5xl font-normal font-antonio uppercase text-left pb-4">
+            {planet.name}
+          </h2>
+          <p className="mt-4 text-gray-400 font-spartan text-left">
+            {getContent()}
+          </p>
+          <p className="text-left font-spartan text-gray pt-2">
+            Source:
+            <a
+              href={planet.overview.source}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline mt-2 text-left"
+            >
+              Wikipedia{' '}
+              <img
+                src="../src/assets/external-link-square-with-an-arrow-in-right-diagonal.svg"
+                className="inline"
+              ></img>
+            </a>
+          </p>
 
-      {/* Tabs */}
-      <div className="flex justify-center mt-6 space-x-4">
-        <button
-          onClick={() => setActiveTab('overview')}
-          className={`text-sm uppercase font-bold ${
-            activeTab === 'overview' ? 'text-lightBlue' : 'text-gray-400'
-          }`}
-        >
-          Overview
-        </button>
-        <button
-          onClick={() => setActiveTab('structure')}
-          className={`text-sm uppercase font-bold ${
-            activeTab === 'structure' ? 'text-lightBlue' : 'text-gray-400'
-          }`}
-        >
-          Internal Structure
-        </button>
-        <button
-          onClick={() => setActiveTab('geology')}
-          className={`text-sm uppercase font-bold ${
-            activeTab === 'geology' ? 'text-lightBlue' : 'text-gray-400'
-          }`}
-        >
-          Surface Geology
-        </button>
+          {/* Tabs */}
+          <div className="grid grid-rows-3 mt-6 gap-4 font-spartan tracking-widest ">
+            <button
+              onClick={() => setActiveTab('overview')}
+              className={`text-sm uppercase font-semibold border border-1 border-gray p-3 text-left ${
+                activeTab === 'overview'
+                  ? 'bg-turquoise border-turquoise'
+                  : 'hover:bg-darkGray border-darkGray'
+              }`}
+            >
+              <span className="text-white opacity-50 p-4 ">01</span> Overview
+            </button>
+            <button
+              onClick={() => setActiveTab('structure')}
+              className={`text-sm uppercase font-semibold border border-1 border-gray p-3 text-left ${
+                activeTab === 'structure'
+                  ? 'bg-turquoise border-turquoise'
+                  : 'hover:bg-darkGray border-darkGray'
+              }`}
+            >
+              <span className="text-white opacity-50 p-4">02</span> Internal
+              Structure
+            </button>
+            <button
+              onClick={() => setActiveTab('geology')}
+              className={`text-sm uppercase font-semibold border border-1 border-gray active:fill-turquoise p-3 text-left ${
+                activeTab === 'geology'
+                  ? 'bg-turquoise border-turquoise'
+                  : 'hover:bg-darkGray border-darkGray'
+              }`}
+            >
+              <span className="text-white opacity-50 p-4">03</span> Surface
+              Geology
+            </button>
+          </div>
+        </div>
       </div>
-
       {/* Stats */}
-      <div className="mt-10 flex flex-col md:flex-row justify-around">
-        <div>
-          <p className="text-sm uppercase text-gray-400">Rotation Time</p>
-          <p className="text-xl font-bold">{planet.rotation}</p>
+      <div className="mt-10  grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="border border-gray p-4 flex flex-col items-center md:items-start">
+          <p className="text-sm uppercase text-gray font-spartan tracking-wider">
+            Rotation Time
+          </p>
+          <p className="text-3xl font-semibold font-antonio uppercase">
+            {planet.rotation}
+          </p>
         </div>
-        <div>
-          <p className="text-sm uppercase text-gray-400">Revolution Time</p>
-          <p className="text-xl font-bold">{planet.revolution}</p>
+        <div className="border border-gray p-4 flex flex-col items-center md:items-start">
+          <p className="text-sm uppercase text-gray font-spartan tracking-wider">
+            Revolution Time
+          </p>
+          <p className="text-3xl font-semibold font-antonio uppercase">
+            {planet.revolution}
+          </p>
         </div>
-        <div>
-          <p className="text-sm uppercase text-gray-400">Radius</p>
-          <p className="text-xl font-bold">{planet.radius}</p>
+        <div className="border border-gray p-4 flex flex-col items-center md:items-start">
+          <p className="text-sm uppercase text-gray font-spartan tracking-wider">
+            Radius
+          </p>
+          <p className="text-3xl font-semibold font-antonio uppercase">
+            {planet.radius}
+          </p>
         </div>
-        <div>
-          <p className="text-sm uppercase text-gray-400">Temperature</p>
-          <p className="text-xl font-bold">{planet.temperature}</p>
+        <div className="border border-gray p-4 flex flex-col items-center md:items-start">
+          <p className="text-sm uppercase text-gray font-spartan tracking-wider">
+            Temperature
+          </p>
+          <p className="text-3xl font-semibold font-antonio uppercase">
+            {planet.temperature}
+          </p>
         </div>
       </div>
     </div>

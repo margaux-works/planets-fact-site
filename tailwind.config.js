@@ -18,8 +18,8 @@ export default {
     },
     extend: {},
     fontFamily: {
-      antonio: ['"Antonio"'],
-      spartan: ['"Spartan"'],
+      antonio: ['"Antonio"', 'sans-serif'],
+      spartan: ['"League Spartan"', 'sans-serif'],
     },
   },
   plugins: [],
