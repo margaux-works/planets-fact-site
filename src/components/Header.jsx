@@ -10,7 +10,10 @@ export const Header = () => {
           <Link
             key={planet.name}
             to={`/${planet.name.toLowerCase()}`}
-            className="hover:underline"
+            style={{
+              borderColor: planet.color,
+            }}
+            className="hover:border-t-2 hover:pt-5 pb-1"
           >
             {planet.name}
           </Link>

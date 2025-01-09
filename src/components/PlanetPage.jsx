@@ -22,33 +22,35 @@ export const PlanetPage = () => {
   };
 
   return (
-    <div className="p-6">
-      <div className="grid grid-cols-2">
-        {/* Planet and Geology Images */}
-        <div className="relative flex justify-center mt-6">
-          {/* Base Planet Image */}
-          <img
-            src={
-              activeTab === 'structure'
-                ? planet.images.internal
-                : planet.images.planet
-            }
-            alt={`${planet.name} ${activeTab}`}
-            className="h-64 m-20"
-          />
-          {/* Geology Image Overlay */}
-          {activeTab === 'geology' && (
+    <div className="p-6 max-w-[1280px] mx-auto">
+      {/* Planet Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+        {/* Planet Images */}
+        <div className="flex justify-center">
+          <div className="relative">
             <img
-              src={planet.images.geology}
-              alt={`${planet.name} geology`}
-              className="absolute top-0 h-32"
+              src={
+                activeTab === 'structure'
+                  ? planet.images.internal
+                  : planet.images.planet
+              }
+              alt={`${planet.name} ${activeTab}`}
+              className="h-64 md:h-50"
             />
-          )}
+            {/* Geology Image Overlay */}
+            {activeTab === 'geology' && (
+              <img
+                src={planet.images.geology}
+                alt={`${planet.name} geology`}
+                className="absolute h-24 md:h-32 bottom-[-20%] left-1/2 transform -translate-x-1/2"
+              />
+            )}
+          </div>
         </div>
 
-        <div className="max-w-[350px] ml-20 mt-10">
-          {/* Planet Title and Content */}
-          <h2 className="text-5xl font-normal font-antonio uppercase text-left pb-4">
+        {/* Planet Title & Content */}
+        <div className="flex flex-col gap-6">
+          <h2 className="text-5xl font-normal font-antonio uppercase text-left mt-10 md:mt-20">
             {planet.name}
           </h2>
           <p className="mt-4 text-gray-400 font-spartan text-left">
@@ -60,7 +62,7 @@ export const PlanetPage = () => {
               href={planet.overview.source}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline mt-2 text-left"
+              className="underline ml-1 text-left"
             >
               Wikipedia{' '}
               <img
@@ -71,35 +73,43 @@ export const PlanetPage = () => {
           </p>
 
           {/* Tabs */}
-          <div className="grid grid-rows-3 mt-6 gap-4 font-spartan tracking-widest ">
+          <div className="grid grid-rows-3 gap-4 font-spartan tracking-widest ">
             <button
               onClick={() => setActiveTab('overview')}
-              className={`text-sm uppercase font-semibold border border-1 border-gray p-3 text-left ${
-                activeTab === 'overview'
-                  ? 'bg-turquoise border-turquoise'
-                  : 'hover:bg-darkGray border-darkGray'
-              }`}
+              style={{
+                backgroundColor:
+                  activeTab === 'overview' ? planet.color : 'transparent',
+                borderColor:
+                  activeTab === 'overview' ? planet.color : '#38384F',
+                color: activeTab === 'overview' ? '#fff' : '#838391',
+              }}
+              className="text-sm uppercase font-semibold border border-1 p-3 text-left hover:bg-darkGray"
             >
               <span className="text-white opacity-50 p-4 ">01</span> Overview
             </button>
             <button
               onClick={() => setActiveTab('structure')}
-              className={`text-sm uppercase font-semibold border border-1 border-gray p-3 text-left ${
-                activeTab === 'structure'
-                  ? 'bg-turquoise border-turquoise'
-                  : 'hover:bg-darkGray border-darkGray'
-              }`}
+              style={{
+                backgroundColor:
+                  activeTab === 'structure' ? planet.color : 'transparent',
+                borderColor:
+                  activeTab === 'structure' ? planet.color : '#38384F',
+                color: activeTab === 'structure' ? '#fff' : '#838391',
+              }}
+              className="text-sm uppercase font-semibold border border-1 p-3 text-left hover:bg-darkGray"
             >
               <span className="text-white opacity-50 p-4">02</span> Internal
               Structure
             </button>
             <button
               onClick={() => setActiveTab('geology')}
-              className={`text-sm uppercase font-semibold border border-1 border-gray active:fill-turquoise p-3 text-left ${
-                activeTab === 'geology'
-                  ? 'bg-turquoise border-turquoise'
-                  : 'hover:bg-darkGray border-darkGray'
-              }`}
+              style={{
+                backgroundColor:
+                  activeTab === 'geology' ? planet.color : 'transparent',
+                borderColor: activeTab === 'geology' ? planet.color : '#38384F',
+                color: activeTab === 'geology' ? '#fff' : '#838391',
+              }}
+              className="text-sm uppercase font-semibold border border-1 p-3 text-left hover:bg-darkGray"
             >
               <span className="text-white opacity-50 p-4">03</span> Surface
               Geology

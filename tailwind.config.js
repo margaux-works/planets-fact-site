@@ -8,7 +8,7 @@ export default {
       darkGray: '#38384F',
       gray: '#838391',
       turquoise: '#419EBB',
-      lightOrange: '#EDA249',
+      salmon: '#EDA249',
       orange: '#D14C32',
       darkOrange: '#CD5120',
       purple: '#6f2ed6',
