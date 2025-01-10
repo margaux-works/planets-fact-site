@@ -21,6 +21,15 @@ export const PlanetPage = () => {
     }
   };
 
+  function getPlanetColorClass(planet) {
+    return planet.color;
+  }
+
+  const planetColorClass = getPlanetColorClass(planet);
+
+  const activeTabClasses = `bg-${planetColorClass} border-${planetColorClass} text-white`;
+  const inactiveTabClasses = 'border-gray hover:bg-darkGray';
+
   return (
     <div className="p-6 max-w-[1280px] mx-auto">
       {/* Planet Section */}
@@ -76,40 +85,28 @@ export const PlanetPage = () => {
           <div className="grid grid-rows-3 gap-4 font-spartan tracking-widest ">
             <button
               onClick={() => setActiveTab('overview')}
-              style={{
-                backgroundColor:
-                  activeTab === 'overview' ? planet.color : 'transparent',
-                borderColor:
-                  activeTab === 'overview' ? planet.color : '#38384F',
-                color: activeTab === 'overview' ? '#fff' : '#838391',
-              }}
-              className="text-sm uppercase font-semibold border border-1 p-3 text-left hover:bg-darkGray"
+              className={`text-sm uppercase font-semibold border p-3 text-left ${
+                activeTab === 'overview' ? activeTabClasses : inactiveTabClasses
+              }`}
             >
               <span className="text-white opacity-50 p-4 ">01</span> Overview
             </button>
             <button
               onClick={() => setActiveTab('structure')}
-              style={{
-                backgroundColor:
-                  activeTab === 'structure' ? planet.color : 'transparent',
-                borderColor:
-                  activeTab === 'structure' ? planet.color : '#38384F',
-                color: activeTab === 'structure' ? '#fff' : '#838391',
-              }}
-              className="text-sm uppercase font-semibold border border-1 p-3 text-left hover:bg-darkGray"
+              className={`text-sm uppercase font-semibold border p-3 text-left ${
+                activeTab === 'structure'
+                  ? activeTabClasses
+                  : inactiveTabClasses
+              }`}
             >
               <span className="text-white opacity-50 p-4">02</span> Internal
               Structure
             </button>
             <button
               onClick={() => setActiveTab('geology')}
-              style={{
-                backgroundColor:
-                  activeTab === 'geology' ? planet.color : 'transparent',
-                borderColor: activeTab === 'geology' ? planet.color : '#38384F',
-                color: activeTab === 'geology' ? '#fff' : '#838391',
-              }}
-              className="text-sm uppercase font-semibold border border-1 p-3 text-left hover:bg-darkGray"
+              className={`text-sm uppercase font-semibold border p-3 text-left ${
+                activeTab === 'geology' ? activeTabClasses : inactiveTabClasses
+              }`}
             >
               <span className="text-white opacity-50 p-4">03</span> Surface
               Geology
