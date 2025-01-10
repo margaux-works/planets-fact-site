@@ -22,5 +22,11 @@ export default {
       spartan: ['"League Spartan"', 'sans-serif'],
     },
   },
+  safelist: [
+    {
+      pattern:
+        /(bg|border)-(turquoise|salmon|purple|orange|red|darkOrange|green|blue)/,
+    },
+  ],
   plugins: [],
 };
