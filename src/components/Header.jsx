@@ -32,15 +32,15 @@ export const Header = () => {
       </button>
 
       {/* Desktop Navigation */}
-      <div className="space-x-4 font-spartan uppercase">
+      <div className="hidden md:flex space-x-4 font-spartan uppercase">
         {planetsData.map((planet) => (
           <Link
             key={planet.name}
             to={`/${planet.name.toLowerCase()}`}
             style={{
-              borderColor: planet.color,
+              borderColor: planet.color, // Use dynamic color for the border
             }}
-            className="hover:border-t-2 hover:pt-5 pb-1"
+            className="relative text-white pb-1 hover:before:content-[''] hover:before:absolute hover:before:top-[-18px] hover:before:left-0 hover:before:right-0 hover:before:h-[4px] hover:before:bg-transparent hover:before:border-t-2 hover:before:border-[inherit]"
           >
             {planet.name}
           </Link>
