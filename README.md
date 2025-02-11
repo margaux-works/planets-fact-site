@@ -33,7 +33,6 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub Repository](https://github.com/margaux-works/planets-fact-site)
-- Live Site URL: [Live Site](https://your-live-site-url.com)
 
 ## My process
 
